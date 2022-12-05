@@ -46,7 +46,7 @@ app.config['UPLOAD_FOLDER'] = 'static/files'
 def index():
     NER = spacy.load("en_core_web_sm")
     keyword_list = ['DATE','ORDINAL','CARDINAL','TIME']
-    en_list = []
+    en_list = set()
     """Home or summarization page for user to summarize their text or PDF file"""
     sumForm = SummaryForm()
     df = pd.DataFrame()
@@ -82,7 +82,7 @@ def index():
         text2= NER(sents)
         for word in text2.ents:
             if word.label_ not in keyword_list:
-                en_list.append(word.text)
+                en_list.add(word.text)
 
         # sents = "£1,400 =>"+sents
         # sents = tokenizer(sents, return_tensors="pt")
