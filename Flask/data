@@ -1,0 +1,86 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>scores</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ad sales boost Time Warner profit\r \r Quarterly profits at US media giant TimeWarner jumped 76% to $1.13bn (£600m) for the three months to December, from $639m year-earlier.</td>
+      <td>1.372718</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The firm, which is now one of the biggest investors in Google, benefited from sales of high-speed internet connections and higher advert sales.</td>
+      <td>1.405433</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>TimeWarner said fourth quarter sales rose 2% to $11.1bn from $10.9bn.</td>
+      <td>1.268633</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Its profits were buoyed by one-off gains which offset a profit dip at Warner Bros, and less users for AOL.</td>
+      <td>1.242295</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Time Warner said on Friday that it now owns 8% of search-engine Google.</td>
+      <td>1.252785</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>But its own internet business, AOL, had has mixed fortunes.</td>
+      <td>1.195397</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>It lost 464,000 subscribers in the fourth quarter profits were lower than in the preceding three quarters.</td>
+      <td>1.188707</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>However, the company said AOL's underlying profit before exceptional items rose 8% on the back of stronger internet advertising revenues.</td>
+      <td>1.134550</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>It hopes to increase subscribers by offering the online service free to TimeWarner internet customers and will try to sign up AOL's existing customers for high-speed broadband.</td>
+      <td>1.109380</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>TimeWarner also has to restate 2000 and 2003 results following a probe by the US Securities Exchange Commission (SEC), which is close to concluding.</td>
+      <td>1.102030</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Time Warner's fourth quarter profits were slightly better than analysts' expectations.</td>
+      <td>1.110808</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>But its film division saw profits slump 27% to $284m, helped by box-office flops Alexander and Catwoman, a sharp contrast to year-earlier, when the third and final film in the Lord of the Rings trilogy boosted results.</td>
+      <td>1.104133</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>For the full-year, TimeWarner posted a profit of $3.36bn, up 27% from its 2003 performance, while revenues grew 6.4% to $42.09bn.</td>
+      <td>1.090608</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>"Our financial performance was strong, meeting or exceeding all of our full-year objectives and greatly enhancing our flexibility," chairman and chief executive Richard Parsons said.</td>
+      <td>1.075160</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>For 2005, TimeWarner is projecting operating earnings growth of around 5%, and also expects higher revenue and wider profit margins.</td>
+      <td>1.072611</td>
+    </tr>
+  </tbody>
+</table>
