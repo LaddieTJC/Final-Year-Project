@@ -25,102 +25,75 @@
       td {
         padding: 5px;
       }
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
     <!-- FORMS -->
-    <div class="text-center mt-5 p-3" style="max-width: 600px; margin: auto">
-      <form
-        method="post"
-        style="max-width: 400px; margin: auto"
-        enctype="multipart/form-data"
-      >
-        <img
-          class="mt-4 mb-3"
-          src="../static/icons8-intelligence-100.png"
-          alt=""
-        />
-        <h3 class="mb-2 font-weight-normal">Please upload a txt or pdf file</h3>
-        {{form.upload(class='form-control mt-5', placeholder='file')}}
-        <ul style="margin: 0" class="list-group">
-          {% for error in form.upload.errors %}
-          <li class="list-group-item list-group-item-danger mb-3">{{error}}</li>
-          {% endfor %}
-        </ul>
-        <label for="customRange1" class="form-label mt-3"
-          >Cumulative Distribution: <span id="rangeval">0.5</span></label
+    <div class="container">
+      <div class="text-center mt-5 p-3" style="max-width: 600px; margin: auto">
+        <form
+          method="post"
+          style="max-width: 400px; margin: auto"
+          enctype="multipart/form-data"
         >
-        <input
-          type="range"
-          class="form-range customRange"
-          id="dist"
-          name="dist"
-          min="0"
-          max="1"
-          step="0.05"
-          oninput="$('#rangeval').html($(this).val())"
-        />
-        <input type="text" id="keyword" ,name="keyword" />
+          <img
+            class="mt-4 mb-3"
+            src="../static/icons8-intelligence-100.png"
+            alt=""
+          />
+          <h3 class="mb-2 font-weight-normal">
+            Please upload a txt or pdf file
+          </h3>
+          {{form.upload(class='form-control mt-5', placeholder='file')}}
+          <ul style="margin: 0" class="list-group">
+            {% for error in form.upload.errors %}
+            <li class="list-group-item list-group-item-danger mb-3">
+              {{error}}
+            </li>
+            {% endfor %}
+          </ul>
+          <label for="customRange1" class="form-label mt-3"
+            >Cumulative Distribution: <span id="rangeval">0.5</span></label
+          >
+          <input
+            type="range"
+            class="form-range customRange"
+            id="dist"
+            name="dist"
+            min="0"
+            max="1"
+            step="0.05"
+            oninput="$('#rangeval').html($(this).val())"
+          />
+          <!-- <input type="text" id="keyword" ,name="keyword" /> -->
 
-        {{form.submit_btn(class='btn btn-md btn-secondary w-100 mb-5 mt-2')}}
-        {{form.csrf_token}}
-      </form>
-      <!-- {% for table in output%} {{ table|safe }} {% endfor %} -->
-      {% for entity in output%}
-      <table>
-        <tr>
-          <td><input type="submit" value="{{entity}}" />{{entity}}</td>
-        </tr>
-      </table>
-      <!-- <p class="mt-3">{{entity}}</p> -->
-      {% endfor %}
-      <!-- <select
-        class="form-select mb-3"
-        style="max-width: 400px; margin: auto"
-        aria-label="Default select example"
-        id="fileType"
-        name="selectOption"
-        method="get"
-      >
-        <option value="fileOnly">Text or PDF File</option>
-        <option value="writeTxt">Write Text</option>
-      </select>
-
-      <form
-        name="writeTxt"
-        id="writeTxt"
-        style="max-width: 400px; margin: auto; display: none"
-        method="post"
-      >
-        <label for="ogText" class="visually-hidden-focusable">Text</label>
-        <textarea
-          name="ogText"
-          id="ogText"
-          cols="30"
-          rows="10"
-          class="form-control"
-          placeholder="Text"
-          required
-          autofocus
-        ></textarea>
-
-        <div class="mt-3 mb-3">
-          <button class="btn btn-md btn-secondary w-100">Enter</button>
-        </div>
-      </form>
-
-    
-      <form 
-      name="fileOnly"
-      id="fileOnly"
-      style="max-width: 400px; margin: auto; display: none"
-      method="post"">
-      <label for="formFile" class="form-label">PDF or TXT file only</label>
-      <input class="form-control" type="file" id="formFile">
-      <div class="mb-3 mt-3">     
-        <button class="btn btn-md btn-secondary w-100">Enter</button>
+          {{form.submit_btn(class='btn btn-md btn-secondary w-100 mb-5 mt-2')}}
+          {{form.csrf_token}}
+        </form>
       </div>
-      </form> -->
+      <!-- {% for table in output%} {{ table|safe }} {% endfor %} -->
+      <!-- <div class="grid-container"> -->
+      <div class="d-grid gap-2 d-md-block grid-container">
+        {% for entity in output%}
+        <div class="mt-3">
+          <input
+            type="submit"
+            value="{{entity}}"
+            class="btn btn-outline-primary btn-rounded"
+          />
+        </div>
+        <!-- <p class="mt-3">{{entity}}</p> -->
+        {% endfor %}
+      </div>
     </div>
 
     <!-- SCRIPT -->
