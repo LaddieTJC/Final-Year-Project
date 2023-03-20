@@ -1,0 +1,146 @@
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title>Summarizer App</title>
+    <style>
+      .container {
+        margin-top: 6rem;
+      }
+      .card {
+        border: none;
+        border-radius: 8px;
+        min-height: 500px;
+        box-shadow: 10px 5px 5px #d3d3d3;
+      }
+
+      .card:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 100%;
+        background-color: #d3d3d3;
+        transform: scaleY(1);
+        transition: all 0.5s;
+        transform-origin: bottom;
+      }
+
+      .card:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 100%;
+        background-color: #696969;
+        transform: scaleY(0);
+        transition: all 0.5s;
+        transform-origin: bottom;
+      }
+
+      .card:hover::after {
+        transform: scaleY(1);
+      }
+
+      .fonts {
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Profile</a>
+            <a
+              class="nav-link"
+              aria-current="page"
+              href="{{url_for('summarizer')}}"
+              >Summarizer</a
+            >
+            <a class="nav-link" href="{{url_for('history')}}">History</a>
+            <a class="nav-link float-right" href="{{url_for('logout')}}"
+              >Logout</a
+            >
+            <!-- <a class="nav-link disabled">Disabled</a> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div>
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7">
+            <div class="card p-3 py-4">
+              <div class="text-center">
+                <img
+                  src="static\profile-picture.jpeg"
+                  width="300"
+                  class="rounded-circle"
+                />
+
+                <h1 class="mt-5 mb-4">{{user.user_name}}</h1>
+                <h4>{{user.email}}</h4>
+
+                <div class="px-4 mt-4">
+                  <p class="fonts">You summarized {{numTexts}} documents.</p>
+                </div>
+                <div>
+                  <a class="btn btn-md btn-secondary w-50 mt-5" href="{{url_for('changeEmail')}}">
+                    Change Email
+                  </a>
+                  <a class="btn btn-md btn-secondary w-50 mt-2" href="{{url_for('changeName')}}">
+                    Change Name
+                  </a>
+                  <a
+                    class="btn btn-md btn-secondary w-50 mb-5 mt-2"
+                    href="{{url_for('changePassword')}}"
+                  >
+                    Change Password
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SCRIPT -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+{% endblock %}

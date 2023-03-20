@@ -20,6 +20,7 @@ class RegistrationForm(FlaskForm):
     email = EmailField('email', validators=[InputRequired(message="Email Required"), Length(min=10,max=30,message="Email must be in a correct format")]) 
     password = PasswordField('password',validators=[InputRequired(message="Password Required"), Length(min=8,max=10,message="Password must be between 8 to 10")])
     cfrm_password = PasswordField('cfrm_password',validators=[InputRequired(message="Password Required"), EqualTo('password', message='Password must match')])
+    # name = StringField('name', validators=[InputRequired(message="Name Required"), Length(min=5,max=30,message="Please enter your name")]) 
     submit_btn = SubmitField('Create')
 
     def validate_email(self, email):

@@ -11,17 +11,7 @@ from urllib.parse import quote_plus as urlquote
 from flask_login import LoginManager,login_user,current_user, login_required,logout_user
 from summary import SummaryForm
 from PyPDF2 import PdfReader
-from pathlib import Path
 from src.westsum import summarize
-import numpy as np
-import math
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.special import softmax
-from scipy.stats import norm
-# from wtf.app import app as application
-import os
 
 app = Flask(__name__)
 app.secret_key = 'NTU is the best'
@@ -36,18 +26,16 @@ login.init_app(app)
 def load_user(id):
     return User.query.get(int(id))
 
-@app.route('/index', methods=['GET','POST'])
-def index():
+@app.route('/summarizer', methods=['GET','POST'])
+def summarizer():
 
     """Home or summarization page for user to summarize their text or PDF file"""
 
     if current_user.is_authenticated:
         sumForm = SummaryForm()
-        df = pd.DataFrame()
         sents = ""
-        count = 0
-        df_output = ""
-        html_sents = ""
+        final_summary = ""
+        doc_text = ""
         if sumForm.validate_on_submit():
             f = sumForm.upload.data
             file_type = str(f.filename).split(".")[-1]
@@ -57,32 +45,13 @@ def index():
                 reader = PdfReader(f)
                 page = reader.pages[0]
                 doc_text = page.extract_text()
-            doc_text = doc_text
-            # inputs = tokenizer(doc_text,truncation = True, return_tensors="pt")
-            # outputs = model.generate(**inputs)
-            # outputs = tokenizer.decode(outputs[0])
-            # data = hf_query(doc_text, api_id)
             if request.method == "POST":
                 cumudist = float(request.form.get("dist"))
-            df = summarize(doc_text)
-            if cumudist < df['cumulative_dist'][0]:
-                count = 1
-                df_output = df[df.index == 0]
-                sents = ' '.join(df_output['text'].tolist())
-                sents = f"Top {count} sentences: \r\n {sents}"
-            else:
-                df_output = df[df['cumulative_dist'] < cumudist]
-                count = df_output['text'].count()
-                sents = ' '.join(df_output['text'].tolist())
-                html_sents = f"Top {count} sentences: \r\n {sents}"
-            # for id in summary_ids:
-            #     summary += sentences[id]['text']
-            #     summary += " "
-            # summary = summary.replace("\r\n","")
-            text = Text(og_text=doc_text,sum_text=str(sents),user_id=current_user.user_id)
+            sents,final_summary = summarize(doc_text,cumudist)
+            text = Text(og_text=doc_text,sum_text=str(final_summary),top_k_sents=str(sents),user_id=current_user.user_id)
             db.session.add(text)
             db.session.commit()
-        return render_template('index.html', form=sumForm, output=html_sents)
+        return render_template('summarizer.html', form=sumForm,original=doc_text,output=sents,final_output=final_summary)
         
     else:
         flash('Please login.', 'danger')
@@ -101,7 +70,7 @@ def history():
 @app.route("/logout",methods=['GET'])
 def logout():
     logout_user()
-    flash('you have logged out successfully','success')
+    flash('you have logged out successfully','logout')
     return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET','POST'])
@@ -116,6 +85,7 @@ def register():
 
         #check if email exists
         user = User(email=email,user_pw=password)
+        
         db.session.add(user)
         db.session.commit()
         
@@ -132,7 +102,7 @@ def login():
     if login_form.validate_on_submit():
         user_object = User.query.filter_by(email=login_form.email.data).first()
         login_user(user_object)
-        return redirect(url_for('index'))
+        return redirect(url_for('summarizer'))
 
     return render_template('login.html', form=login_form)
 
