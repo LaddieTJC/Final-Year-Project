@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocSum</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <style>
+      .mainContainer {
+        min-height: 90vh;
+      }
+      .container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1.5rem 1rem 1rem 1rem;
+        margin: auto;
+      }
+
+      .hiwestsum {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 2rem 0px 2rem;
+        margin: 2.5rem 10rem 5rem 10rem;
+      }
+      img {
+        width: 1200px;
+        border: 1px solid black;
+      }
+      h3 {
+        color: grey;
+      }
+      hr {
+        max-width: 250px;
+        margin: 1rem auto;
+        border-top: 5px dotted;
+      }
+      p {
+        overflow-wrap: break-word;
+        text-align: justify;
+        font-size: x-large;
+      }
+      figcaption {
+        text-align: center;
+        color: black;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{{url_for('landingPage')}}"
+            >Home</a
+          >
+          <a class="nav-link" href="{{url_for('login')}}">Login</a>
+          <a class="nav-link" href="{{url_for('register')}}">Register</a>
+          <!-- <a class="nav-link disabled">Disabled</a> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <div class="mainContainer">
+      <div class="hiwestsum">
+        <div>
+          <h1>HIWESTSUM</h1>
+          <h3>Hierarchical Weight Sharing Transformer for Summarization</h3>
+        </div>
+        <div>
+          <img class="img-fluid" src="..\static\architecture.jpeg" alt="" />
+          <figcaption class="mt-1">HIWESTSUM architecture</figcaption>
+        </div>
+      </div>
+      <hr />
+      <div class="container mt-5">
+        <p>
+          HIWESTSUM built on top of BERTSUM is very light in weight with
+          parameter size over 10 times smaller than current existing models that
+          finetune BERT for summarization. Moreover, the proposed model is
+          faster than SOTA models with shorter training and inference time. It
+          learns effectively from both sentence and document level
+          representations with weight sharing mechanisms. By adopting weight
+          sharing and hierarchical learning strategies, it is proven in this
+          project that the proposed model HIWESTSUM may reduce the usage of
+          computational resources for summarization and achieve comparable
+          results as SOTA models when trained on smaller datasets.
+        </p>
+      </div>
+      <div class="container">
+        <a
+          class="btn btn-lg btn-secondary w-50"
+          href="{{url_for('landingPage')}}"
+        >
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocSum</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <style>
+      .mainContainer {
+        min-height: 90vh;
+      }
+      .container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1.5rem 1rem 1rem 1rem;
+        margin: auto;
+      }
+
+      .absLayout {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 2rem 0px 2rem;
+        margin: 2.5rem 10rem 2.5rem 10rem;
+      }
+      img {
+        width: 1400px;
+        border: 1px solid black;
+      }
+      h3 {
+        color: grey;
+      }
+      hr {
+        max-width: 250px;
+        margin: 1rem auto;
+        border-top: 5px dotted;
+      }
+      p {
+        overflow-wrap: break-word;
+        text-align: justify;
+        font-size: x-large;
+      }
+      figcaption {
+        text-align: center;
+        color: black;
+      }
+    </style>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{{url_for('landingPage')}}"
+            >Home</a
+          >
+          <a class="nav-link" href="{{url_for('login')}}">Login</a>
+          <a class="nav-link" href="{{url_for('register')}}">Register</a>
+          <!-- <a class="nav-link disabled">Disabled</a> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <div class="mainContainer">
+      <div class="absLayout">
+        <div>
+          <h1>T5</h1>
+          <h3>Text-to-Text-Transfer-Transformer</h3>
+        </div>
+        <div>
+          <img class="img-fluid" src="..\static\new_text_to_text.jpg" alt="" />
+          <figcaption class="mt-1">Text-to-Text Framework</figcaption>
+        </div>
+      </div>
+      <hr />
+      <div class="container">
+        <p>
+          Recent advances in NLP have shown that transfer learning, a method
+          that where a pre-trained model that was trained on a generic task is
+          then used to fine-tune on specific downstream tasks such as
+          summarization, classification and machine translation. It allows the
+          model to converge faster and lower requirement of fine-tuning data.
+          <br />
+          <br />
+          Text-to-Text Transfer Transformer (T5) model is utilized for the
+          abstractive summarization portion. T5 is essentially a survey on how
+          modern transfer learning methods are used in language understanding.
+          Hence, the researchers proposes a unified framework that attempts to
+          combine all language problems into a text-to-text format as shown in
+          the figure above.
+          <br />
+          <br />
+          The main purpose of this paper is to measure the general language
+          learning abilities and the performance of difference downstream tasks
+          with different benchmark, including machine translation, abstractive
+          summarization, and text classification but this project will only
+          focus on abstractive summarization.
+        </p>
+      </div>
+      <div class="container">
+        <a
+          class="btn btn-lg btn-secondary w-50"
+          href="{{url_for('landingPage')}}"
+        >
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
