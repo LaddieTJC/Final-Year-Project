@@ -18,4 +18,4 @@ Technologies stack used:
 
 
 Link to summarizing model:
-https://drive.google.com/drive/u/0/folders/1ugJvdE-0suLTzUfwd4fO_ah5jRnwGBTD
+https://drive.google.com/drive/folders/1ugJvdE-0suLTzUfwd4fO_ah5jRnwGBTD?usp=share_link
